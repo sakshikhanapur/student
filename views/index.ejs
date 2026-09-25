@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+</head>
+
+<body>
+
+    <h1>Student Management System</h1>
+
+    <h2>Add Student</h2>
+
+    <form action="/add" method="POST">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Student Name"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            type="text"
+            name="course"
+            placeholder="Course"
+            required
+        >
+
+        <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            required
+        >
+
+        <button type="submit">Add Student</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Student Records</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+
+        <% students.forEach((student, index) => { %>
+
+            <tr>
+
+                <td>
+                    <%= index + 1 %>
+                </td>
+
+                <td>
+                    <%= student.name %>
+                </td>
+
+                <td>
+                    <%= student.email %>
+                </td>
+
+                <td>
+                    <%= student.course %>
+                </td>
+
+                <td>
+                    <%= student.age %>
+                </td>
+
+                <td>
+                    <form
+                        action="/delete/<%= student.id %>"
+                        method="POST"
+                    >
+                        <button type="submit">🗑️ Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+
+        <% }) %>
+
+    </table>
+
+</body>
+</html>
